@@ -105,7 +105,8 @@ db.exam.aggregate([
     {$match: {nombre_de_pieces: {$gt: 1000}}},
     {$group: {
         _id: "$nom",
-        avgNote: {$avg: "$evaluations.note"}}}
+        avgNote: {$avg: "$evaluations.note"}}},
+    {$match: {avgNote: {$gte: 4}}}
 ])
 
 //Trouvez les sets Lego qui ont uniquement des évaluations de 5/5.
